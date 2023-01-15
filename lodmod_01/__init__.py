@@ -27,4 +27,4 @@ def menu_func(self, context):
     self.layout.operator(DecimateModifierOperator.bl_idname)
 
 if __name__ == "__main__":
-    register()
+   register()

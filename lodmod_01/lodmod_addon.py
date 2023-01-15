@@ -23,10 +23,11 @@ class DecimateModifierOperator(bpy.types.Operator):
                 # Set the decimate modifier to collapse at 0.5
                 mod.ratio = 0.5
 
-                # Apply the modifier
-                bpy.context.view_layer.objects.active = duplicate
-                bpy.ops.object.modifier_apply(modifier="Decimate")
-                obj.select_set(False)
                 obj = duplicate
-            return {'FINISHED'}
+
+                # Apply the modifier
+            bpy.context.view_layer.objects.active = duplicate
+            bpy.ops.object.modifier_apply(modifier="Decimate")
+            #obj.select_set(False)
+            #obj = duplicate
         return {'FINISHED'}
