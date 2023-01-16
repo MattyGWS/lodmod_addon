@@ -10,7 +10,7 @@ class DecimateModifierOperator(bpy.types.Operator):
         selected_objects = bpy.context.selected_objects
 
         for obj in selected_objects:
-            for i in range(5):
+            for i in range(bpy.context.scene.lod_count):
                 # Duplicate the selected object
                 duplicate = obj.copy()
                 duplicate.data = obj.data.copy()
@@ -21,8 +21,7 @@ class DecimateModifierOperator(bpy.types.Operator):
                 mod = duplicate.modifiers.new(name="Decimate", type='DECIMATE')
 
                 # Set the decimate modifier to collapse at 0.5
-                mod.ratio = 0.5
-
+                mod.ratio = bpy.context.scene.decimate_ratio
                 obj = duplicate
 
                 # Apply the modifier

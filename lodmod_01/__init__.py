@@ -1,3 +1,9 @@
+import bpy
+from bpy.types import Scene
+from .lodmod_addon import DecimateModifierOperator
+from bpy.types import Panel
+
+
 bl_info = {
     "name": "lodmod_01",
     "author": "Matty Wyett-Simmonds",
@@ -10,21 +16,37 @@ bl_info = {
     "category": "Object",
     }
 
-import bpy
-from .lodmod_addon import DecimateModifierOperator
+class VIEW3D_PT_lodmod_object_lodmod(Panel):
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
+    bl_label = "LODMOD Settings"
+    bl_category = "LODMOD"
 
-classes = (DecimateModifierOperator, )
+    def draw(self, context):
+        layout = self.layout
+        col = layout.column(align=True)
+        col.operator(DecimateModifierOperator.bl_idname, text="Create LOD's")
+        IntProperty = layout.prop(context.scene, "lod_count")
+        FloatProperty = layout.prop(context.scene, "decimate_ratio")
+
+
+classes = (DecimateModifierOperator, VIEW3D_PT_lodmod_object_lodmod)
 
 def register():
-        bpy.utils.register_class(DecimateModifierOperator)
-        bpy.types.VIEW3D_MT_object.append(menu_func)
+    for cls in classes:
+        bpy.utils.register_class(cls)
+    bpy.types.Scene.lodmod_addon = bpy.props.BoolProperty(name="lodmod_addon", default=False)
+    bpy.types.Scene.lod_count = bpy.props.IntProperty(name="Number of LODs", default=5, min=1, max=10)
+    bpy.types.Scene.decimate_ratio = bpy.props.FloatProperty(name="Decimation Ratio", default=0.5, min=0, max=1)
 
 def unregister():
-        bpy.utils.unregister_class(DecimateModifierOperator)
-        bpy.types.VIEW3D_MT_object.remove(menu_func)
+    for cls in classes:
+        bpy.utils.unregister_class(cls)
+    del bpy.types.Scene.lodmod_addon
+    del bpy.types.Scene.lod_count
+    del bpy.types.Scene.decimate_ratio
 
-def menu_func(self, context):
-    self.layout.operator(DecimateModifierOperator.bl_idname)
+
 
 if __name__ == "__main__":
    register()
