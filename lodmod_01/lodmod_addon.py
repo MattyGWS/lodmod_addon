@@ -17,17 +17,22 @@ class DecimateModifierOperator(bpy.types.Operator):
                 duplicate.name = obj.name.replace("_LOD"+str(i),"") + "_LOD" + str(i+1)
                 bpy.context.collection.objects.link(duplicate)
 
-                # Add a decimate modifier to the duplicate object
-                mod = duplicate.modifiers.new(name="Decimate", type='DECIMATE')
+                # Check if the duplicate object already has a decimate modifier
+                decimate_modifier = None
+                for mod in duplicate.modifiers:
+                    if mod.type == 'DECIMATE':
+                        decimate_modifier = mod
+                        break
 
-                # Set the decimate modifier to collapse at 0.5
-                mod.ratio = bpy.context.scene.decimate_ratio
-                obj = duplicate
+                # If the object does not have a decimate modifier, add one
+                if decimate_modifier is None:
+                    decimate_modifier = duplicate.modifiers.new(name="Decimate", type='DECIMATE')
+
+                # Set the decimate modifier ratio based on the current iteration
+                decimate_modifier.ratio = (bpy.context.scene.decimate_ratio) ** (i + 1)
 
                 # Apply the modifier if checkbox enabled
                 if (bpy.context.scene.apply_modifs):
                     bpy.context.view_layer.objects.active = duplicate
                     bpy.ops.object.modifier_apply(modifier="Decimate")
-            #obj.select_set(False)
-            #obj = duplicate
         return {'FINISHED'}
