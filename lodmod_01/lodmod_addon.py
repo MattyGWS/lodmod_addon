@@ -24,9 +24,10 @@ class DecimateModifierOperator(bpy.types.Operator):
                 mod.ratio = bpy.context.scene.decimate_ratio
                 obj = duplicate
 
-                # Apply the modifier
-            bpy.context.view_layer.objects.active = duplicate
-            bpy.ops.object.modifier_apply(modifier="Decimate")
+                # Apply the modifier if checkbox enabled
+                if (bpy.context.scene.apply_modifs):
+                    bpy.context.view_layer.objects.active = duplicate
+                    bpy.ops.object.modifier_apply(modifier="Decimate")
             #obj.select_set(False)
             #obj = duplicate
         return {'FINISHED'}
