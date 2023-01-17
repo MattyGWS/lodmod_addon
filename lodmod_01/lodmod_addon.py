@@ -10,11 +10,14 @@ class DecimateModifierOperator(bpy.types.Operator):
         selected_objects = bpy.context.selected_objects
 
         for obj in selected_objects:
+            original_name = obj.name
+            if (bpy.context.scene.add_lod0_name):
+                obj.name = original_name + "_LOD0"
             for i in range(bpy.context.scene.lod_count):
                 # Duplicate the selected object
                 duplicate = obj.copy()
                 duplicate.data = obj.data.copy()
-                duplicate.name = obj.name.replace("_LOD"+str(i),"") + "_LOD" + str(i+1)
+                duplicate.name = original_name + "_LOD" + str(i+1)
                 bpy.context.collection.objects.link(duplicate)
 
                 # Check if the duplicate object already has a decimate modifier
@@ -35,6 +38,5 @@ class DecimateModifierOperator(bpy.types.Operator):
                 if (bpy.context.scene.apply_modifs):
                     bpy.context.view_layer.objects.active = duplicate
                     bpy.ops.object.modifier_apply(modifier="Decimate")
-            if (bpy.context.scene.add_lod0_name):
-                obj.name = obj.name + "_LOD0"
+
         return {'FINISHED'}
