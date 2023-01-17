@@ -11,4 +11,4 @@ To use after installation in blender;
 6) choose if you wish to add the _LOD0 suffix to the original object
 7) choose if you want to offset the LODs so you can see them in a lineup (default offset 0)
 8) choose if you want your lods in neat collections named after the original objects
-8) press the "Create LOD's" button and you're done!
+9) press the "Create LOD's" button and you're done!
