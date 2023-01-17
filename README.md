@@ -12,3 +12,6 @@ To use after installation in blender;
 7) choose if you want to offset the LODs so you can see them in a lineup (default offset 0)
 8) choose if you want your lods in neat collections named after the original objects
 9) press the "Create LOD's" button and you're done!
+![image](https://user-images.githubusercontent.com/56587299/212920896-a17ad49f-f31c-491f-bc9a-041e354faa08.png)
+![image](https://user-images.githubusercontent.com/56587299/212922245-6e08bf0f-0540-4213-b85d-5b4744f663d2.png)
+![image](https://user-images.githubusercontent.com/56587299/212922312-3a182fe3-a985-4638-9106-0ff5774f1e56.png)
