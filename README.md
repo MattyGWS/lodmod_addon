@@ -8,4 +8,5 @@ To use after installation in blender;
 3) choose how many lods you want
 4) choose what ratio you wish to decimate them (lower value = less verts)
 5) choose if you wish to apply the modifier stacks automatically
-6) press the "Create LOD's" button and you're done!
+6) choose if you wish to add the _LOD0 suffix to the original object
+7) press the "Create LOD's" button and you're done!
