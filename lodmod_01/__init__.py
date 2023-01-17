@@ -26,6 +26,7 @@ class VIEW3D_PT_lodmod_object_lodmod(Panel):
         layout = self.layout
         IntProperty = layout.prop(context.scene, "lod_count")
         FloatProperty = layout.prop(context.scene, "decimate_ratio")
+        FloatProperty = layout.prop(context.scene, "lineup_offset")
         BoolProperty = layout.prop(context.scene, "apply_modifs")
         BoolProperty = layout.prop(context.scene, "add_lod0_name")
         layout.separator()
@@ -42,6 +43,7 @@ def register():
     bpy.types.Scene.decimate_ratio = bpy.props.FloatProperty(name="Decimation Ratio", default=0.5, min=0.1, max=0.9)
     bpy.types.Scene.apply_modifs = bpy.props.BoolProperty(name="Apply Modifiers", default=True)
     bpy.types.Scene.add_lod0_name = bpy.props.BoolProperty(name="Add _LOD0 suffix", default=False)
+    bpy.types.Scene.lineup_offset = bpy.props.FloatProperty(name="Lineup Offset", default=0.0, min=0.0, max=50.0)
 
 def unregister():
     for cls in classes:
@@ -51,6 +53,7 @@ def unregister():
     del bpy.types.Scene.decimate_ratio
     del bpy.types.Scene.apply_modifs
     del bpy.types.Scene.add_lod0_name
+    del bpy.types.Scene.lineup_offset
 
 
 

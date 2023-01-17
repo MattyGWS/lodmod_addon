@@ -1,4 +1,5 @@
 import bpy
+from mathutils import Vector
 
 class DecimateModifierOperator(bpy.types.Operator):
     """Applies a decimate modifier set to collapse at 0.5 on the selected object and duplicate it 5 times"""
@@ -19,6 +20,12 @@ class DecimateModifierOperator(bpy.types.Operator):
                 duplicate.data = obj.data.copy()
                 duplicate.name = original_name + "_LOD" + str(i+1)
                 bpy.context.collection.objects.link(duplicate)
+
+                # move the object on x axis
+                duplicate.location += Vector((bpy.context.scene.lineup_offset * (i+1), 0, 0))
+
+                # Close the undo context
+                bpy.ops.ed.undo_push(message="Duplicate Location Change")
 
                 # Check if the duplicate object already has a decimate modifier
                 decimate_modifier = None
