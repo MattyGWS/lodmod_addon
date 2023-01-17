@@ -3,12 +3,6 @@ A blender addon for creating lods
 
 -----
 
-https://user-images.githubusercontent.com/56587299/212928753-3dfd7e79-8896-43a4-9543-b6b97d767ad1.mp4
-
-https://user-images.githubusercontent.com/56587299/212928010-304e2844-051d-450d-935e-871ecb02337c.mp4
-
------
-
 To use after installation in blender;
 
 1) select all objects you want lods for (works on multiple objects at a time)
@@ -20,6 +14,12 @@ To use after installation in blender;
 7) choose if you want to offset the LODs so you can see them in a lineup (default offset 0)
 8) choose if you want your lods in neat collections named after the original objects
 9) press the "Create LOD's" button and you're done!
+
+-----
+
+https://user-images.githubusercontent.com/56587299/212928753-3dfd7e79-8896-43a4-9543-b6b97d767ad1.mp4
+
+https://user-images.githubusercontent.com/56587299/212928010-304e2844-051d-450d-935e-871ecb02337c.mp4
 
 -----
 
