@@ -29,6 +29,7 @@ class VIEW3D_PT_lodmod_object_lodmod(Panel):
         FloatProperty = layout.prop(context.scene, "lineup_offset")
         BoolProperty = layout.prop(context.scene, "apply_modifs")
         BoolProperty = layout.prop(context.scene, "add_lod0_name")
+        BoolProperty = layout.prop(context.scene, "make_collections")
         layout.separator()
         layout.operator(DecimateModifierOperator.bl_idname, text="Create LOD's")
 
@@ -44,6 +45,7 @@ def register():
     bpy.types.Scene.apply_modifs = bpy.props.BoolProperty(name="Apply Modifiers", default=True)
     bpy.types.Scene.add_lod0_name = bpy.props.BoolProperty(name="Add _LOD0 suffix", default=False)
     bpy.types.Scene.lineup_offset = bpy.props.FloatProperty(name="Lineup Offset", default=0.0, min=0.0, max=50.0)
+    bpy.types.Scene.make_collections = bpy.props.BoolProperty(name="Make Collections", default=False)
 
 def unregister():
     for cls in classes:
@@ -54,6 +56,7 @@ def unregister():
     del bpy.types.Scene.apply_modifs
     del bpy.types.Scene.add_lod0_name
     del bpy.types.Scene.lineup_offset
+    del bpy.types.Scene.make_collections
 
 
 
