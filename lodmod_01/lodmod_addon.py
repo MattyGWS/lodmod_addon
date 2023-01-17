@@ -35,4 +35,6 @@ class DecimateModifierOperator(bpy.types.Operator):
                 if (bpy.context.scene.apply_modifs):
                     bpy.context.view_layer.objects.active = duplicate
                     bpy.ops.object.modifier_apply(modifier="Decimate")
+            if (bpy.context.scene.add_lod0_name):
+                obj.name = obj.name + "_LOD0"
         return {'FINISHED'}
