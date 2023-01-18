@@ -26,3 +26,11 @@ https://user-images.githubusercontent.com/56587299/212928010-304e2844-051d-450d-
 ![image](https://user-images.githubusercontent.com/56587299/212920896-a17ad49f-f31c-491f-bc9a-041e354faa08.png)
 ![image](https://user-images.githubusercontent.com/56587299/212922245-6e08bf0f-0540-4213-b85d-5b4744f663d2.png)
 ![image](https://user-images.githubusercontent.com/56587299/212922312-3a182fe3-a985-4638-9106-0ff5774f1e56.png)
+
+-----
+
+What is it doing?
+
+The meat of this addon is pretty simple, it's duplicating your object (or objects) by the however many you want, and for each duplicate it's giving the suffix _LODx (x being a number). And then for each duplicate it also applies a decimate lod set to collapse with a ratio of the amount you've set for each lod as it goes down the list, meaning each lod gets lower and lower vert counts. if you set the ratio to 0.5 then each lod will literally reduce in verts by half each time.
+
+The extra features found in the menu are self explanatory but feel free to reach out for questions or feedback!
