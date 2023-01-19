@@ -36,8 +36,6 @@ class DecimateModifierOperator(bpy.types.Operator):
                 bpy.ops.ed.undo_push(message="Duplicate Location Change")
 
 
-
-
                 # Check if the duplicate object already has a decimate modifier
                 decimate_modifier = None
                 for mod in duplicate.modifiers:
@@ -56,6 +54,7 @@ class DecimateModifierOperator(bpy.types.Operator):
                 # Apply the modifier if checkbox enabled
                 if (bpy.context.scene.apply_modifs):
                     bpy.context.view_layer.objects.active = duplicate
-                    bpy.ops.object.modifier_apply(modifier="Decimate")
+                    for mod in duplicate.modifiers:
+                        bpy.ops.object.modifier_apply(modifier=mod.name)
 
         return {'FINISHED'}
